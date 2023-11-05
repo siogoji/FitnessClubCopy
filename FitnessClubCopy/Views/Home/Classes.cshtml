@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = "Заняття";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FitnessClub</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FitnessClub.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header-area header-sticky" style="background-color: black;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">Training<em> Studio</em></a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index">Про нас</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
+                            <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="/UserAuthentication/Logout">Logout</a></li>
+                            }
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+<section class="section" id="our-classes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Наші <em>заняття</em></h2>
+                    <img src="images/line-dec.png" alt="">
+                    <p>Опис занять, які ми пропонуємо</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="tabs">
+            <div class="col-lg-4">
+                <ul>
+                    <li><a href='#tabs-1' onclick="showTab('tabs-1')"><img src="~/images/tabs-first-icon.png" alt="">Силові тренування</a></li>
+                    <li><a href='#tabs-2' onclick="showTab('tabs-2')"><img src="~/images/tabs-first-icon.png" alt="">Йога</a></a></li>
+                    <li><a href='#tabs-3' onclick="showTab('tabs-3')"><img src="~/images/tabs-first-icon.png" alt="">Аеробіка</a></a></li>
+                    <li><a href='#tabs-4' onclick="showTab('tabs-4')"><img src="~/images/tabs-first-icon.png" alt="">Тренування високої інтенсивності</a></a></li>
+                    <li><a href='#tabs-5' onclick="showTab('tabs-5')"><img src="~/images/tabs-first-icon.png" alt="">Кросфіт</a></a></li>
+                    <div class="main-rounded-button"><a href="#">View All Schedules</a></div>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <section class='tabs-content'>
+                    <article id='tabs-1'>
+                            <img src="~/images/training-image-01.jpg" alt="First Class">
+                        <h4>Силові тренування</h4>
+                        <p>Силові тренування або тренування з ваговими навантаженнями спрямовані на зміцнення м'язів та покращення м'язової маси. Це може включати в себе використання гантелей, гирь, тренажерів і власної ваги тіла. Силові вправи допомагають розвивати, підтримувати м'язову масу та зберігати тонус.</p>
+                        <div class="main-button">
+                            <a href="#">Переглянути розклад</a>
+                        </div>
+                    </article>
+                    <article id='tabs-2' style="display: none;">
+                            <img src="~/images/training-image-02.jpg" alt="Second Training">
+                        <h4>Йога</h4>
+                        <p>Йога - це давній систематичний підхід до фізичного, психічного і духовного здоров'я. Включає в себе пози, дихальні вправи і медитацію. Покращує гнучкість та розтяжку, покращує психічне здоров'я та зменшує стрес.</p>
+                        <div class="main-button">
+                            <a href="#">View Schedule</a>
+                        </div>
+                    </article>
+                    <article id='tabs-3' style="display: none;">
+                            <img src="~/images/training-image-03.jpg" alt="Third Class">
+                        <h4>Аеробіка</h4>
+                        <p>Аеробіка - це вид фізичної активності, який включає ритмічні та координовані рухи з музикою. Це часто включає в себе кардіотренування, так як підвищує роботу серцево-судинної системи. Покращує загальну фізичну форму, розвиває силу, допомагає схуднути та зміцнює серцево-судинну систему.</p>
+                        <div class="main-button">
+                            <a href="#">View Schedule</a>
+                        </div>
+                    </article>
+                    <article id='tabs-4' style="display: none;">
+                            <img src="~/images/training-image-04.jpg" alt="Fourth Training">
+                        <h4>Тренування високої інтенсивності</h4>
+                        <p>Це тренування, яке включає в себе короткі, інтенсивні періоди активності, чергуючи їх з короткими періодами відпочинку. З переваг можна виділити швидке спалення калорій, покращення метаболізму, підтягнення м'язів, зменшення кров'яного тиску та рівня цукру в крові.</p>
+                        <div class="main-button">
+                            <a href="#">View Schedule</a>
+                        </div>
+                    </article>
+                    <article id='tabs-5' style="display: none;">
+                        <img src="~/images/training-image-04.jpg" alt="Fifth Training">
+                        <h4>Кросфіт</h4>
+                        <p>Кросфіт - це інтенсивна форма фітнесу, яка поєднує різноманітні види фізичних вправ, щоб покращити загальну фізичну підготовку та здоров'я. Кросфіт включає в себе різні види тренувань, від силових вправ до кардіотренувань та функціонального тренінгу.</p>
+                        <div class="main-button">
+                            <a href="#">View Schedule</a>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        Номери телефону для зв'язку: +380971820167 | +380671840199
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap -->
+    <script src="~/js/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/js/scrollreveal.min.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/imgfix.min.js"></script>
+    <script src="~/js/mixitup.js"></script>
+    <script src="~/js/accordions.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <!-- Global Init -->
+    <script src="~/js/custom.js"></script>
+</body>
+</html>
