@@ -188,6 +188,13 @@ header
 --------------------------------------------- 
 */
 
+/*Welcome, username*/
+.user-info {
+    color: white;
+    cursor: default;
+    pointer-events: none; 
+}
+
 .background-header {
     background: rgba(250,250,250,0.99) !important;
     height: 80px !important;
@@ -1135,7 +1142,7 @@ contact
     }
 
     .reg-form button, .login-form button {
-        background-color: #aa048b;
+        background-color: #99775C;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;

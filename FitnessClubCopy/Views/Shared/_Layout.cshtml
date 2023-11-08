@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,16 +21,25 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Головна</a></li>
-                            <li class="scroll-to-section"><a href="#features">Про нас</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
                             <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
-                            <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li><a href="/UserAuthentication/Logout">Logout</a></li>
+                                string userName = User.Identity.Name;
+                                if (userName.Length > 5)
+                                {
+                                    userName = userName.Substring(0, 5) + "...";
+                                }
+                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
+                                <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
                             }
                         </ul>
                         <a class='menu-trigger'>
@@ -75,4 +86,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

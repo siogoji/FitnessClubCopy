@@ -1,5 +1,6 @@
 ﻿using FitnessClubCopy.Repositories;
 using FitnessClubCopy.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,19 +38,19 @@ namespace FitnessClubCopy.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Registration(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid) { return View(model); }
             model.Role = "user";
-            var result = await this._authService.RegistrationAsync(model);
+            var result = await this._authService.RegisterAsync(model);
             TempData["msg"] = result.Message;
-            return RedirectToAction(nameof(Registration));
+            return RedirectToAction(nameof(Register));
         }
         [Authorize]
         public async Task<IActionResult> Logout()
         {
             await this._authService.LogoutAsync();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Index", "Home");
         }
         public async Task<IActionResult> reg()
         {
@@ -61,7 +62,7 @@ namespace FitnessClubCopy.Controllers
                 Password = "Admin12345!"
             };
             model.Role = "admin";
-            var result = await this._authService.RegistrationAsync(model);
+            var result = await this._authService.RegisterAsync(model);
             return Ok(result);
         }
     }

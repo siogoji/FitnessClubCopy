@@ -69,7 +69,7 @@ namespace FitnessClubCopy.Repositories
             await signInManager.SignOutAsync();
         }
 
-        public async Task<Status> RegistrationAsync(RegisterViewModel model)
+        public async Task<Status> RegisterAsync(RegisterViewModel model)
         {
             var status = new Status();
             var userExists = await userManager.FindByNameAsync(model.Username);

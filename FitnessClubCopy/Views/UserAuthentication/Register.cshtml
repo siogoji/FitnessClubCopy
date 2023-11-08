@@ -20,17 +20,30 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">Training<em> Studio</em></a>
+                        <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index">Про нас</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
                             <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index">Контакти</a></li>
-                            <li class="main-button"><a href="#">Sign Up</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                string userName = User.Identity.Name;
+                                if (userName.Length > 5)
+                                {
+                                    userName = userName.Substring(0, 5) + "...";
+                                }
+                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
+                                <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
+                            }
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -50,33 +63,33 @@
                     </div>
                 </div>
             </div>
-            <form asp-action="Registration" method="post" class="reg-form">
+            <form asp-action="Register" method="post" class="reg-form">
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Ваше ім'я</label>
                     <input type="text" class="form-control" asp-for="Name" />
                     <span class="text-danger" asp-validation-for="Name"></span>
                 </div>
 
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>Логін</label>
                     <input type="text" class="form-control" asp-for="Username" />
                     <span class="text-danger" asp-validation-for="Username"></span>
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
+                    <label>Електронна пошта</label>
                     <input type="text" class="form-control" asp-for="Email" />
                     <span class="text-danger" asp-validation-for="Email"></span>
                 </div>
 
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>Пароль</label>
                     <input type="password" class="form-control" asp-for="Password" />
                     <span class="text-danger" asp-validation-for="Password"></span>
                 </div>
 
                 <div class="form-group">
-                    <label>Password confirm</label>
+                    <label>Підтвердження паролю</label>
                     <input type="password" class="form-control" asp-for="PasswordConfirm" />
                     <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
                 </div>
@@ -88,8 +101,8 @@
                     </div>
                 }
 
-                <button type="submit" class="btn btn-info">Registration</button>               
-                <a class="text-alert" href="/UserAuthentication/Login">Вже маєте акаунт? Увійти</a>
+                <button type="submit" class="btn btn-info">Реєстрація</button>               
+                <a class="text-alert" href="/UserAuthentication/Вхід">Вже маєте акаунт? Увійти</a>
             </form>
         </div>
     </section>

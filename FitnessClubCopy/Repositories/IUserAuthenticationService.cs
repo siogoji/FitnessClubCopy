@@ -6,7 +6,7 @@ namespace FitnessClubCopy.Repositories
     public interface IUserAuthenticationService
     {
         Task<Status> LoginAsync(LoginViewModel model);
-        Task<Status> RegistrationAsync(RegisterViewModel model);
+        Task<Status> RegisterAsync(RegisterViewModel model);
         Task LogoutAsync();
     }
 }

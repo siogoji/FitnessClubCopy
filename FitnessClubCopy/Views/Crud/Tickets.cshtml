@@ -19,27 +19,32 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">Training<em> Studio</em></a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index">Про нас</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index">Контакти</a></li>
-                        <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li><a href="/UserAuthentication/Logout">Logout</a></li>
-                        }
-                    </ul>
+                        <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
+                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                string userName = User.Identity.Name;
+                                if (userName.Length > 5)
+                                {
+                                    userName = userName.Substring(0, 5) + "...";
+                                }
+                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
+                                <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
+                            }
+                        </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
-                    <!-- ***** Menu End ***** -->
                 </nav>
             </div>
         </div>
@@ -68,7 +73,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-center">№</th>
                             <th class="text-center">Тип</th>
                             <th class="text-center">Період</th>
                             <th class="text-center">Ціна</th>
@@ -78,19 +82,18 @@
                     <tbody>
                         @foreach (var ticket in Model)
                         {
-                            <tr>
-                                <td class="text-center">@ticket.TicketId</td>
-                                <td class="text-center">@ticket.Type</td>
-                                <td class="text-center">@ticket.Period</td>
-                                <td class="text-center">@ticket.Price</td>
-                                @if (User.IsInRole("admin"))
-                                {
-                                    <td>
-                                        <a asp-action="Edit" asp-controller="Crud" asp-route-id="@ticket.TicketId" class="btn btn-warning">Редагувати</a>
-                                        <button class="btn btn-danger" onclick="confirmDelete(@ticket.TicketId)">Видалити</button>
-                                    </td>
-                                }
-                                </tr>
+                        <tr>
+                            <td class="text-center">@ticket.Type</td>
+                            <td class="text-center">@ticket.Period</td>
+                            <td class="text-center">@ticket.Price</td>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <td>
+                                    <a asp-action="Edit" asp-controller="Crud" asp-route-id="@ticket.TicketId" class="btn btn-warning">Редагувати</a>
+                                        <button class="btn btn-danger" onclick="confirmDelete(@ticket.TicketId)" style="margin-right: 10px;">Видалити</button>
+                                </td>
+                            }
+                          </tr>
                         }
                     </tbody>
                 </table>
@@ -117,11 +120,9 @@
             window.location.href = "/Crud/Delete/" + trainerId;
         }
     </script>
-    <!-- Bootstrap -->
     <script src="~/js/popper.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
 
-    <!-- Plugins -->
     <script src="~/js/scrollreveal.min.js"></script>
     <script src="~/js/waypoints.min.js"></script>
     <script src="~/js/jquery.counterup.min.js"></script>
@@ -130,7 +131,6 @@
     <script src="~/js/accordions.js"></script>
     <script src="~/js/site.js"></script>
 
-    <!-- Global Init -->
     <script src="~/js/custom.js"></script>
 </body>
 </html>
@@ -144,4 +144,15 @@
         height: 100vh;
     } */
 
+    table {
+        width: 100%;
+    }
+
+        table th, table td {
+            text-align: right;
+        }
+
+    td button {
+        margin-left: 5px; 
+    }
 </style>
