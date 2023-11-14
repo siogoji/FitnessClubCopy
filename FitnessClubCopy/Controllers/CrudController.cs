@@ -1,5 +1,6 @@
 ﻿using FitnessClubCopy.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FitnessClubCopy.Controllers
 {
@@ -108,5 +109,68 @@ namespace FitnessClubCopy.Controllers
 
             return RedirectToAction(nameof(Tickets));
         }
+
+        [HttpGet]
+        public IActionResult Buy(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ticket = _context.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            // Link the ticket to the current user
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = _context.Users.Find(userId);
+
+            if (user != null)
+            {
+                // Створення об'єкта UserTicket та додавання його до контексту
+                var userTicket = new UserTicket { UserId = userId, TicketId = ticket.TicketId };
+                _context.UserTickets.Add(userTicket);
+
+                // Save changes to the database
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("BuyConfirmation", new { id = ticket.TicketId });
+        }
+
+        [HttpGet]
+        public IActionResult BuyConfirmation(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ticket = _context.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+
+            return View(ticket);
+        }
+
+        public IActionResult UserTickets()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            // Використовуйте LINQ для отримання квитків, пов'язаних з поточним користувачем
+            var userTickets = _context.UserTickets
+                .Where(ut => ut.UserId == userId)
+                .Select(ut => ut.Ticket)
+                .ToList();
+
+            return View(userTickets);
+        }
+
+
     }
 }

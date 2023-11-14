@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,10 +14,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo" id="top-link">Training<em> Studio</em></a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
@@ -34,7 +29,7 @@
                                 {
                                     userName = userName.Substring(0, 5) + "...";
                                 }
-                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
+                                <li class="scroll-to-section user-info"><a asp-controller="Crud" asp-action="UserTickets">Welcome, @userName</a></li>
                                 <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
                             }
                             else
@@ -45,7 +40,6 @@
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
                     </nav>
                 </div>
             </div>

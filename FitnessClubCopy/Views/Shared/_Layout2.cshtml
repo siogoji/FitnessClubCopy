@@ -1,8 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Абонементи";
-    Layout = null;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -14,15 +10,15 @@
 </head>
 <body>
     <header class="header-area header-sticky" style="background-color: black;">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">Training<em> Studio</em></a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
                             <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
@@ -31,66 +27,33 @@
                             <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @User.Identity.Name!</a></li>
+                                string userName = User.Identity.Name;
+                                if (userName.Length > 5)
+                                {
+                                    userName = userName.Substring(0, 5) + "...";
+                                }
+                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
                                 <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
                             }
                             else
                             {
                                 <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
                             }
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
-    <section class="section" id="abonements">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>Абонементи</h2>
-                        <img src="images/line-dec.png" alt="">
-                        <p>Оберіть підходящий абонемент для ваших потреб</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Тип абонементу</th>
-                                <th scope="col">Період</th>
-                                <th scope="col">Ціна</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Базовий</td>
-                                <td>1 місяць</td>
-                                <td>$50</td>
-                            </tr>
-                            <tr>
-                                <td>Розширений</td>
-                                <td>3 місяці</td>
-                                <td>$120</td>
-                            </tr>
-                            <tr>
-                                <td>Преміум</td>
-                                <td>6 місяців</td>
-                                <td>$200</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
+
+
+    <main role="main" class="pb-3">
+        <div>@RenderBody()</div>
+    </main>
 
 
     <footer id="tickets-footer">
@@ -119,5 +82,6 @@
 
     <!-- Global Init -->
     <script src="~/js/custom.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

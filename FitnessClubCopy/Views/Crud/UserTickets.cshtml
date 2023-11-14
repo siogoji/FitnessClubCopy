@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Особистий кабінет";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section class="section" id="abonements">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Особистий кабінет</h2>
+                </div>
+            </div>
+        </div>
+    <table class="table">
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td class="text-center">@ticket.TicketId</td>
+                <td class="text-center">@ticket.Type</td>
+                <td class="text-center">@ticket.Period</td>
+                <td class="text-center">@ticket.Price</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+</div>
+</section

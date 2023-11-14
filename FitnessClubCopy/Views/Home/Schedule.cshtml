@@ -1,155 +1,77 @@
 ﻿@{
     ViewData["Title"] = "Заняття";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FitnessClub</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitnessClub.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header class="header-area header-sticky" style="background-color: black;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                string userName = User.Identity.Name;
-                                if (userName.Length > 5)
-                                {
-                                    userName = userName.Substring(0, 5) + "...";
-                                }
-                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
-                                <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
-                            }
-                            else
-                            {
-                                <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
-                            }
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+
+
+<section class="section" id="schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading dark-bg">
+                    <h2>Розклад <em>занять</em></h2>
+                    <img src="images/line-dec.png" alt="">
+                    <p>Ви можете переглянути розклад занять натиснувши на потрібний день тижня та побачивши інформацію вид заняття, яким Ви зацікавлені</p>
                 </div>
             </div>
         </div>
-    </header>
-
-    <section class="section" id="schedule">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading dark-bg">
-                        <h2>Розклад <em>занять</em></h2>
-                        <img src="images/line-dec.png" alt="">
-                        <p>Ви можете переглянути розклад занять натиснувши на потрібний день тижня та побачивши інформацію вид заняття, яким Ви зацікавлені</p>
-                    </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="filters">
+                    <ul class="schedule-filter">
+                        <li class="active" data-tsfilter="monday">Monday</li>
+                        <li data-tsfilter="tuesday">Tuesday</li>
+                        <li data-tsfilter="wednesday">Wednesday</li>
+                        <li data-tsfilter="thursday">Thursday</li>
+                        <li data-tsfilter="friday">Friday</li>
+                    </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="filters">
-                        <ul class="schedule-filter">
-                            <li class="active" data-tsfilter="monday">Monday</li>
-                            <li data-tsfilter="tuesday">Tuesday</li>
-                            <li data-tsfilter="wednesday">Wednesday</li>
-                            <li data-tsfilter="thursday">Thursday</li>
-                            <li data-tsfilter="friday">Friday</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="schedule-table filtering">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td class="day-time">Силові тренування</td>
-                                    <td class="monday ts-item show" data-tsmeta="monday">10:00AM - 11:30AM</td>
-                                    <td class="tuesday ts-item" data-tsmeta="tuesday">2:00PM - 3:30PM</td>
-                                    <td>William G. Stewart</td>
-                                </tr>
-                                <tr>
-                                    <td class="day-time">Йога</td>
-                                    <td class="friday ts-item" data-tsmeta="friday">10:00AM - 11:30AM</td>
-                                    <td class="thursday friday ts-item" data-tsmeta="thursday" data-tsmeta="friday">2:00PM - 3:30PM</td>
-                                    <td>Данилів Тимур</td>
-                                </tr>
-                                <tr>
-                                    <td class="day-time">Аеробіка</td>
-                                    <td class="tuesday ts-item" data-tsmeta="tuesday">10:00AM - 11:30AM</td>
-                                    <td class="monday ts-item show" data-tsmeta="monday">2:00PM - 3:30PM</td>
-                                    <td>Boyd C. Harris</td>
-                                </tr>
-                                <tr>
-                                    <td class="day-time">Тренування високої інтенсивності</td>
-                                    <td class="wednesday ts-item" data-tsmeta="wednesday">10:00AM - 11:30AM</td>
-                                    <td class="friday ts-item" data-tsmeta="friday">2:00PM - 3:30PM</td>
-                                    <td>Шерстюк Ілля</td>
-                                </tr>
-                                <tr>
-                                    <td class="day-time">Кросфіт</td>
-                                    <td class="thursday ts-item" data-tsmeta="thursday">10:00AM - 11:30AM</td>
-                                    <td class="wednesday ts-item" data-tsmeta="wednesday">2:00PM - 3:30PM</td>
-                                    <td>Григоренко Петро</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div class="col-lg-10 offset-lg-1">
+                <div class="schedule-table filtering">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="day-time">Силові тренування</td>
+                                <td class="monday ts-item show" data-tsmeta="monday">10:00AM - 11:30AM</td>
+                                <td class="tuesday ts-item" data-tsmeta="tuesday">2:00PM - 3:30PM</td>
+                                <td>William G. Stewart</td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Йога</td>
+                                <td class="friday ts-item" data-tsmeta="friday">10:00AM - 11:30AM</td>
+                                <td class="thursday friday ts-item" data-tsmeta="thursday" data-tsmeta="friday">2:00PM - 3:30PM</td>
+                                <td>Данилів Тимур</td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Аеробіка</td>
+                                <td class="tuesday ts-item" data-tsmeta="tuesday">10:00AM - 11:30AM</td>
+                                <td class="monday ts-item show" data-tsmeta="monday">2:00PM - 3:30PM</td>
+                                <td>Boyd C. Harris</td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Тренування високої інтенсивності</td>
+                                <td class="wednesday ts-item" data-tsmeta="wednesday">10:00AM - 11:30AM</td>
+                                <td class="friday ts-item" data-tsmeta="friday">2:00PM - 3:30PM</td>
+                                <td>Шерстюк Ілля</td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Кросфіт</td>
+                                <td class="thursday ts-item" data-tsmeta="thursday">10:00AM - 11:30AM</td>
+                                <td class="wednesday ts-item" data-tsmeta="wednesday">2:00PM - 3:30PM</td>
+                                <td>Григоренко Петро</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>
-                        Номери телефону для зв'язку: +380971820167 | +380671840199
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Bootstrap -->
-    <script src="~/js/popper.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="~/js/scrollreveal.min.js"></script>
-    <script src="~/js/waypoints.min.js"></script>
-    <script src="~/js/jquery.counterup.min.js"></script>
-    <script src="~/js/imgfix.min.js"></script>
-    <script src="~/js/mixitup.js"></script>
-    <script src="~/js/accordions.js"></script>
-    <script src="~/js/site.js"></script>
-
-    <!-- Global Init -->
-    <script src="~/js/custom.js"></script>
-</body>
-</html>
-
-    <script>
+   
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         // Get all the filter items
         var filterItems = document.querySelectorAll('.schedule-filter li');

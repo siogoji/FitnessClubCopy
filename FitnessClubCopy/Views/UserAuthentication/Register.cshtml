@@ -3,135 +3,58 @@
     ViewData["Title"] = "Реєстрація";
     Layout = null;
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FitnessClub</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitnessClub.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header class="header-area header-sticky" style="background-color: black;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                string userName = User.Identity.Name;
-                                if (userName.Length > 5)
-                                {
-                                    userName = userName.Substring(0, 5) + "...";
-                                }
-                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
-                                <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
-                            }
-                            else
-                            {
-                                <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
-                            }
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+
+<section class="section" id="abonements">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Реєстрація</h2>
                 </div>
             </div>
         </div>
-    </header>
-    <section class="section" id="abonements">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>Реєстрація</h2>
-                    </div>
-                </div>
+        <form asp-action="Register" method="post" class="reg-form">
+            <div class="form-group">
+                <label>Ваше ім'я</label>
+                <input type="text" class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
             </div>
-            <form asp-action="Register" method="post" class="reg-form">
-                <div class="form-group">
-                    <label>Ваше ім'я</label>
-                    <input type="text" class="form-control" asp-for="Name" />
-                    <span class="text-danger" asp-validation-for="Name"></span>
-                </div>
 
-                <div class="form-group">
-                    <label>Логін</label>
-                    <input type="text" class="form-control" asp-for="Username" />
-                    <span class="text-danger" asp-validation-for="Username"></span>
-                </div>
-
-                <div class="form-group">
-                    <label>Електронна пошта</label>
-                    <input type="text" class="form-control" asp-for="Email" />
-                    <span class="text-danger" asp-validation-for="Email"></span>
-                </div>
-
-                <div class="form-group">
-                    <label>Пароль</label>
-                    <input type="password" class="form-control" asp-for="Password" />
-                    <span class="text-danger" asp-validation-for="Password"></span>
-                </div>
-
-                <div class="form-group">
-                    <label>Підтвердження паролю</label>
-                    <input type="password" class="form-control" asp-for="PasswordConfirm" />
-                    <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
-                </div>
-
-                @if (TempData["msg"] != null)
-                {
-                    <div class="form-group">
-                        <span class="text-info">@TempData["msg"]</span>
-                    </div>
-                }
-
-                <button type="submit" class="btn btn-info">Реєстрація</button>               
-                <a class="text-alert" href="/UserAuthentication/Вхід">Вже маєте акаунт? Увійти</a>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>
-                        Номери телефону для зв'язку: +380971820167 | +380671840199
-                    </p>
-                </div>
+            <div class="form-group">
+                <label>Логін</label>
+                <input type="text" class="form-control" asp-for="Username" />
+                <span class="text-danger" asp-validation-for="Username"></span>
             </div>
-        </div>
-    </footer>
-    <!-- Bootstrap -->
-    <script src="~/js/popper.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
 
-    <!-- Plugins -->
-    <script src="~/js/scrollreveal.min.js"></script>
-    <script src="~/js/waypoints.min.js"></script>
-    <script src="~/js/jquery.counterup.min.js"></script>
-    <script src="~/js/imgfix.min.js"></script>
-    <script src="~/js/mixitup.js"></script>
-    <script src="~/js/accordions.js"></script>
-    <script src="~/js/site.js"></script>
+            <div class="form-group">
+                <label>Електронна пошта</label>
+                <input type="text" class="form-control" asp-for="Email" />
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
 
-    <!-- Global Init -->
-    <script src="~/js/custom.js"></script>
-</body>
-</html>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" class="form-control" asp-for="Password" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Підтвердження паролю</label>
+                <input type="password" class="form-control" asp-for="PasswordConfirm" />
+                <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+            </div>
+
+            @if (TempData["msg"] != null)
+            {
+                <div class="form-group">
+                    <span class="text-info">@TempData["msg"]</span>
+                </div>
+            }
+   
+            <button type="submit" class="btn btn-info">Реєстрація</button>               
+            <a class="text-alert" href="/UserAuthentication/Login">Вже маєте акаунт? Увійти</a>
+        </form>
+    </div>
+</section>
+
+   

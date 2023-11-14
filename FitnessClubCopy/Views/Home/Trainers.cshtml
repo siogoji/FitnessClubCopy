@@ -1,177 +1,98 @@
 ﻿@{
     ViewData["Title"] = "Тренери";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FitnessClub</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitnessClub.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header class="header-area header-sticky" style="background-color: black;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
-                            <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                string userName = User.Identity.Name;
-                                if (userName.Length > 5)
-                                {
-                                    userName = userName.Substring(0, 5) + "...";
-                                }
-                                <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
-                                <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
-                            }
-                            else
-                            {
-                                <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
-                            }
+
+<section class="section" id="trainers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Наші <em>тренери</em></h2>
+                    <img src="~/images/line-dec.png" alt="">
+                    <p>Список наших тренерів</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="trainer-item" data-index="0">
+                    <div class="image-thumb">
+                        <img src="~/images/first-trainer.jpg" alt="">
+                    </div>
+                    <div class="down-content">
+                        <span>Силовий тренер</span>
+                        <h4>Григоренко Петро</h4>
+                        <p>Має понад 10 років досвіду у силовому тренуванні, прагне покращити фізичну форму і збільшити силу своїх клієнтів, сприяючи їхньому розвитку та підвищенню самовпевненості. </p>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
                         </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="trainer-item" data-index="1">
+                    <div class="image-thumb">
+                        <img src="~/images/second-trainer.jpg" alt="">
+                    </div>
+                    <div class="down-content">
+                        <span>Тренер м'язів</span>
+                        <h4>Шерстюк Ілля</h4>
+                        <p>володіє понад 8-річним досвідом у тренуванні м'язів, один із сильних аспектів роботи - це індивідуальний підхід до кожного клієнта. </p>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="trainer-item" data-index="2">
+                    <div class="image-thumb">
+                        <img src="~/images/third-trainer.jpg" alt="">
+                    </div>
+                    <div class="down-content">
+                        <span>Power Trainer</span>
+                        <h4>Данилів Тимур</h4>
+                        <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style="margin-top: 20px;">
+                <div class="trainer-item" data-index="3">
+                    <div class="image-thumb">
+                        <img src="~/images/third-trainer.jpg" alt="" style="margin-bottom: 20px;"> 
+                    </div>
+                    <div class="down-content">
+                        <span>Power Trainer</span>
+                        <h4>аув уваца</h4>
+                        <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-    <section class="section" id="trainers">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>Наші <em>тренери</em></h2>
-                        <img src="~/images/line-dec.png" alt="">
-                        <p>Список наших тренерів</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="trainer-item" data-index="0">
-                        <div class="image-thumb">
-                            <img src="~/images/first-trainer.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Силовий тренер</span>
-                            <h4>Григоренко Петро</h4>
-                            <p>Має понад 10 років досвіду у силовому тренуванні, прагне покращити фізичну форму і збільшити силу своїх клієнтів, сприяючи їхньому розвитку та підвищенню самовпевненості. </p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item" data-index="1">
-                        <div class="image-thumb">
-                            <img src="~/images/second-trainer.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Тренер м'язів</span>
-                            <h4>Шерстюк Ілля</h4>
-                            <p>володіє понад 8-річним досвідом у тренуванні м'язів, один із сильних аспектів роботи - це індивідуальний підхід до кожного клієнта. </p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item" data-index="2">
-                        <div class="image-thumb">
-                            <img src="~/images/third-trainer.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>Данилів Тимур</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4" style="margin-top: 20px;">
-                    <div class="trainer-item" data-index="3">
-                        <div class="image-thumb">
-                            <img src="~/images/third-trainer.jpg" alt="" style="margin-bottom: 20px;"> <!---->
-                        </div>
-                        <div class="down-content">
-                            <span>Power Trainer</span>
-                            <h4>аув уваца</h4>
-                            <p>Bitters cliche tattooed 8-bit distillery mustache. Keytar succulents gluten-free vegan church-key pour-over seitan flannel.</p>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-lg-12">
 
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-
-                </div>
             </div>
         </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>
-                        Номери телефону для зв'язку: +380971820167 | +380671840199
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Bootstrap -->
-    <script src="~/js/popper.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="~/js/scrollreveal.min.js"></script>
-    <script src="~/js/waypoints.min.js"></script>
-    <script src="~/js/jquery.counterup.min.js"></script>
-    <script src="~/js/imgfix.min.js"></script>
-    <script src="~/js/mixitup.js"></script>
-    <script src="~/js/accordions.js"></script>
-    <script src="~/js/site.js"></script>
-
-    <!-- Global Init -->
-    <script src="~/js/custom.js"></script>
-</body>
-</html>
-
+    </div>
+</section>
+    

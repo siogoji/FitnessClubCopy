@@ -24,14 +24,14 @@ namespace FitnessClubCopy.Repositories
             if (user == null)
             {
                 status.StatusCode = 0;
-                status.Message = "Invalid username";
+                status.Message = "Неправильний логін";
                 return status;
             }
 
             if (!await userManager.CheckPasswordAsync(user, model.Password))
             {
                 status.StatusCode = 0;
-                status.Message = "Invalid Password";
+                status.Message = "Неправильний пароль";
                 return status;
             }
             var signInResult = await signInManager.PasswordSignInAsync(user, model.Password, false, true);
@@ -48,7 +48,7 @@ namespace FitnessClubCopy.Repositories
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
                 status.StatusCode = 1;
-                status.Message = "Logged in successfully";
+                status.Message = "Вхід успішно виконано";
             }
             else if (signInResult.IsLockedOut)
             {
@@ -76,7 +76,7 @@ namespace FitnessClubCopy.Repositories
             if (userExists != null)
             {
                 status.StatusCode = 0;
-                status.Message = "User already exist";
+                status.Message = "Користувач вже існує";
                 return status;
             }
             ApplicationUser user = new ApplicationUser()
@@ -93,7 +93,7 @@ namespace FitnessClubCopy.Repositories
             if (!result.Succeeded)
             {
                 status.StatusCode = 0;
-                status.Message = "User creation failed";
+                status.Message = "Проблема з реєстрацією";
                 return status;
             }
 
@@ -107,7 +107,7 @@ namespace FitnessClubCopy.Repositories
             }
 
             status.StatusCode = 1;
-            status.Message = "You have registered successfully";
+            status.Message = "Ви успішно зареєструвались";
             return status;
         }
     }

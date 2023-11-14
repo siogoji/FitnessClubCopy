@@ -191,8 +191,10 @@ header
 /*Welcome, username*/
 .user-info {
     color: white;
+    /* 
     cursor: default;
-    pointer-events: none; 
+    pointer-events: none
+    */
 }
 
 .background-header {
