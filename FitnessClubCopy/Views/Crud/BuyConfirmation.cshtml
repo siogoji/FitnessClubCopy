@@ -1,28 +1,32 @@
 ﻿@model FitnessClubCopy.Models.Ticket
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Include necessary head elements here -->
-</head>
-<body>
+@{
+    ViewData["Title"] = "Підтвердження купівлі";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section class="section" id="abonements">
     <div class="container">
-        <h2>Підтвердження купівлі</h2>
-        <dl class="row">
-            <dt class="col-sm-3">Тип</dt>
-            <dd class="col-sm-9">@Model.Type</dd>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Підтвердження купівлі</h2>
+                </div>
+            </div>
+        </div>
+    <dl class="row">
+        <dt class="col-sm-3">Тип</dt>
+        <dd class="col-sm-9">@Model.Type</dd>
 
-            <dt class="col-sm-3">Період</dt>
-            <dd class="col-sm-9">@Model.Period</dd>
+        <dt class="col-sm-3">Період</dt>
+        <dd class="col-sm-9">@Model.Period</dd>
 
-            <dt class="col-sm-3">Ціна</dt>
-            <dd class="col-sm-9">@Model.Price</dd>
-        </dl>
-        <form asp-action="UserTickets" asp-controller="Crud" method="post">
-            <input type="hidden" name="id" value="@Model.TicketId" />
-            <button type="submit" class="btn btn-primary">Купити</button>
-        </form>
+        <dt class="col-sm-3">Ціна</dt>
+        <dd class="col-sm-9">@Model.Price</dd>
+    </dl>
+    <form asp-action="UserTickets" asp-controller="Crud" method="post">
+        <input type="hidden" name="id" value="@Model.TicketId" />
+        <button type="submit" class="btn btn-primary">Купити</button>
+    </form>
     </div>
-    <!-- Include necessary scripts here -->
-</body>
-</html>
+</section

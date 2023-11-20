@@ -73,24 +73,14 @@
    
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Get all the filter items
         var filterItems = document.querySelectorAll('.schedule-filter li');
-
-        // Add click event listener to each filter item
         filterItems.forEach(function (item) {
             item.addEventListener('click', function () {
-                // Get the data-tsfilter value
                 var filterValue = this.getAttribute('data-tsfilter');
-
-                // Remove 'active' class from all items
                 filterItems.forEach(function (item) {
                     item.classList.remove('active');
                 });
-
-                // Add 'active' class to the clicked item
                 this.classList.add('active');
-
-                // Show/hide schedule items based on the filterValue
                 var scheduleItems = document.querySelectorAll('.ts-item');
                 scheduleItems.forEach(function (item) {
                     item.classList.remove('show');
