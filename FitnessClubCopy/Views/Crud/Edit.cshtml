@@ -15,19 +15,27 @@
                 </div>
             </div>
         </div>
-        <form asp-action="Edit" method="post">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="TicketId" />
             <div class="form-group mt-2">
-                <label asp-for="Type">Тип</label>
+                <label asp-for="Type"></label>
                 <input asp-for="Type" class="form-control" />
             </div>
             <div class="form-group mt-2">
-                <label asp-for="Period">Період</label>
+                <label asp-for="Period"></label>
                 <input asp-for="Period" class="form-control" />
             </div>
             <div class="form-group mt-2">
-                <label asp-for="Price">Ціна</label>
+                <label asp-for="Price"></label>
                 <input asp-for="Price" class="form-control" />
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="Photo"></label>
+                <input asp-for="Photo" type="file" class="form-control" />
             </div>
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary">Зберегти зміни</button>

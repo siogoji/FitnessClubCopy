@@ -31,10 +31,22 @@ namespace FitnessClubCopy.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("TicketId,Type,Period,Price")] Ticket Ticket)
+        public IActionResult Create([Bind("TicketId,Type,Period,Price,Description")] Ticket Ticket, IFormFile photo)
         {
             if (ModelState.IsValid)
             {
+                byte[] photoBytes = null;
+                if (photo != null)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        photo.CopyTo(ms);
+                        photoBytes = ms.ToArray();
+                    }
+                }
+
+                Ticket.Photo = photoBytes;
+
                 _context.Add(Ticket);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Tickets));
@@ -61,20 +73,43 @@ namespace FitnessClubCopy.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("TicketId,Type,Period,Price")] Ticket Ticket)
+        public IActionResult Edit(int id, [Bind("TicketId,Type,Period,Price,Description")] Ticket ticket, IFormFile Photo)
         {
-            if (id != Ticket.TicketId)
+            if (id != ticket.TicketId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _context.Update(Ticket);
+                var existingTicket = _context.Tickets.FirstOrDefault(t => t.TicketId == id);
+
+                if (existingTicket == null)
+                {
+                    return NotFound();
+                }
+
+                existingTicket.Type = ticket.Type;
+                existingTicket.Period = ticket.Period;
+                existingTicket.Price = ticket.Price;
+                existingTicket.Description = ticket.Description;
+
+                // Update the photo if a new photo is selected
+                if (Photo != null && Photo.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        Photo.CopyTo(ms);
+                        existingTicket.Photo = ms.ToArray();
+                    }
+                }
+
                 _context.SaveChanges();
+
                 return RedirectToAction(nameof(Tickets));
             }
-            return View(Ticket);
+
+            return View(ticket);
         }
 
         [HttpGet]
