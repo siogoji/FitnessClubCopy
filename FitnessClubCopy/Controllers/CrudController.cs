@@ -33,7 +33,7 @@ namespace FitnessClubCopy.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("TicketId,Type,Period,Price,Description")] Ticket Ticket, IFormFile photo)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || ModelState.ContainsKey("Photo"))
             {
                 byte[] photoBytes = null;
                 if (photo != null)
@@ -80,7 +80,7 @@ namespace FitnessClubCopy.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || ModelState.ContainsKey("Photo"))
             {
                 var existingTicket = _context.Tickets.FirstOrDefault(t => t.TicketId == id);
 
@@ -94,7 +94,6 @@ namespace FitnessClubCopy.Controllers
                 existingTicket.Price = ticket.Price;
                 existingTicket.Description = ticket.Description;
 
-                // Update the photo if a new photo is selected
                 if (Photo != null && Photo.Length > 0)
                 {
                     using (var ms = new MemoryStream())

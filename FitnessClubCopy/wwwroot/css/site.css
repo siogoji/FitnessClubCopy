@@ -316,7 +316,9 @@ header
                 .header-area .main-nav .nav li a {
                     color: #fff;
                 }
-
+                .main-nav.black-text a {
+                    color: black !important; 
+                }
                 .header-area .main-nav .nav li:last-child a {
                     display: inline-block;
                     font-size: 13px;
@@ -772,7 +774,6 @@ Our Classes
 }
 
 #tabs ul li a {
-    text-transform: capitalize;
     width: 100%;
     padding: 30px 30px;
     display: inline-block;
@@ -890,7 +891,6 @@ schedule
         #schedule table tr td {
             color: #fff;
             font-size: 13px;
-            text-transform: capitalize;
             font-weight: 500;
             letter-spacing: 0.25px;
         }
@@ -1188,7 +1188,17 @@ footer
 footer {
     text-align: center;
     padding: 30px 0px;
+    /*position: sticky;
+    top: 100%;*/
 }
+
+/*#footer-layout {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+}*/
 
 #tickets-footer {
     position: absolute;

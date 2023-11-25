@@ -1,9 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Абонементи";
     Layout = "~/Views/Shared/_Layout2.cshtml";
+    
 }
-
-
 
 <section class="section" id="abonements">
     <div class="container">
@@ -61,8 +60,7 @@
                             </div>
                         </div>
                     </div>
-                </div>      
-                
+                </div>                   
             }
         </div>
     </div>
@@ -70,33 +68,9 @@
 </div>
 </section>
 
-    
 <script>
     function confirmDelete(trainerId) {
         window.location.href = "/Crud/Delete/" + trainerId;
     }
 </script>
 
-<style>
-
-   /*  body {
-        background-color: #3b3a38;
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-    } */
-
-    table {
-        width: 100%;
-    }
-
-        table th, table td {
-            text-align: right;
-        }
-
-    td button {
-        margin-left: 5px; 
-    }
-
-    }
-</style>

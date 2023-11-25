@@ -1,55 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Особистий кабінет";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FitnessClub</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitnessClub.styles.css" asp-append-version="true" />
-</head>
-<body>
-<header class="header-area header-sticky" style="background-color: black;">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <a href="/Home/Index" class="logo">Training<em> Studio</em></a>
-                    <ul class="nav">
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Index" class="active">Головна</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Classes">Заняття</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Crud" asp-action="Tickets">Абонементи</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Trainers">Тренери</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Schedule">Графік</a></li>
-                        <li class="scroll-to-section"><a asp-controller="Home" asp-action="Contacts">Контакти</a></li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            string userName = User.Identity.Name;
-                            if (userName.Length > 5)
-                            {
-                                userName = userName.Substring(0, 5) + "...";
-                            }
-                            <li class="scroll-to-section user-info"><a href="#top">Welcome, @userName</a></li>
-                            <li class="main-button"><a href="/UserAuthentication/Logout">Logout</a></li>
-                        }
-                        else
-                        {
-                            <li class="main-button"><a href="/UserAuthentication/Login">Sign Up</a></li>
-                        }
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
 
 <section class="section" id="abonements">
     <div class="container">
@@ -93,24 +45,3 @@
         </div>
 </div>
 </section
-
-
-<!-- Bootstrap -->
-<script src="~/js/popper.js"></script>
-<script src="~/js/bootstrap.min.js"></script>
-
-<!-- Plugins -->
-<script src="~/js/scrollreveal.min.js"></script>
-<script src="~/js/waypoints.min.js"></script>
-<script src="~/js/jquery.counterup.min.js"></script>
-<script src="~/js/imgfix.min.js"></script>
-<script src="~/js/mixitup.js"></script>
-<script src="~/js/accordions.js"></script>
-<script src="~/js/site.js"></script>
-
-<!-- Global Init -->
-<script src="~/js/custom.js"></script>
-
-</body>
-</html>
-
