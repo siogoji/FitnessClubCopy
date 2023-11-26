@@ -113,7 +113,7 @@ namespace FitnessClubCopy.Migrations
 
                     b.HasKey("FeedbackId");
 
-                    b.ToTable("FeedbackForm");
+                    b.ToTable("FeedbackForm", (string)null);
                 });
 
             modelBuilder.Entity("FitnessClubCopy.Models.Ticket", b =>
@@ -143,7 +143,7 @@ namespace FitnessClubCopy.Migrations
 
                     b.HasKey("TicketId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("FitnessClubCopy.Models.UserTicket", b =>
@@ -167,7 +167,7 @@ namespace FitnessClubCopy.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserTickets");
+                    b.ToTable("UserTickets", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

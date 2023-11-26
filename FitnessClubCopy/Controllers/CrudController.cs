@@ -158,17 +158,13 @@ namespace FitnessClubCopy.Controllers
                 return NotFound();
             }
 
-            // Link the ticket to the current user
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var user = _context.Users.Find(userId);
 
             if (user != null)
             {
-                // Створення об'єкта UserTicket та додавання його до контексту
                 var userTicket = new UserTicket { UserId = userId, TicketId = ticket.TicketId };
                 _context.UserTickets.Add(userTicket);
-
-                // Save changes to the database
                 _context.SaveChanges();
             }
 
