@@ -19,9 +19,16 @@
 
             <form asp-action="Delete" asp-controller="Crud" method="post">
                 <input type="hidden" asp-for="TicketId" />
-                <button type="submit" class="btn btn-danger">Підтвердити видалення</button>
+
+                <h4 class="small mt-2">Тип: @Model.Type</h4>
+                <h4 class="small">Період: @Model.Period</h4>
+                <h4 class="small">Ціна: @Model.Price</h4>
+                <h4 class="small">Опис: @Model.Description</h4>
+
+                <button type="submit" class="btn btn-danger">Так, видалити</button>
                 <a asp-action="Index" class="btn btn-secondary">Скасувати</a>
             </form>
+
         </div>
     </div>
 </section>

@@ -14,22 +14,18 @@
                 </div>
             </div>
         </div>
-    <dl class="row">
-            <dt class="col-sm-3">Тип:</dt>
-            <dd class="col-sm-9">@Model.Type</dd>
+    <div class="row">
+        <div class="col-12">Тип: @Model.Type</div>
 
-            <dt class="col-sm-3">Період:</dt>
-            <dd class="col-sm-9">@Model.Period</dd>
+        <div class="col-12">Період: @Model.Period</div>
 
-            <dt class="col-sm-3">Ціна:</dt>
-            <dd class="col-sm-9">@Model.Price</dd>
+        <div class="col-12">Ціна: @Model.Price</div>
 
-            <dt class="col-sm-3">Опис:</dt>
-            <dd class="col-sm-9">@Model.Description</dd>          
-        </dl>
+        <div class="col-12">Опис: @Model.Description</div>       
+    </div>
     <form asp-action="UserTickets" asp-controller="Crud" method="post">
         <input type="hidden" name="id" value="@Model.TicketId" />
-        <button type="submit" class="btn btn-primary">Купити</button>
+        <button type="submit" class="btn btn-primary mt-2">Купити</button>
     </form>
     </div>
 </section

@@ -192,7 +192,6 @@ namespace FitnessClubCopy.Controllers
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            // Використовуйте LINQ для отримання квитків, пов'язаних з поточним користувачем
             var userTickets = _context.UserTickets
                 .Where(ut => ut.UserId == userId)
                 .Select(ut => ut.Ticket)
