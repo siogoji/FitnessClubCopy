@@ -10,22 +10,22 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
-                    <h2>Підтвердження купівлі</h2>
+                    <h2>@Localizer["Підтвердження купівлі"]</h2>
                 </div>
             </div>
         </div>
     <div class="row">
-        <div class="col-12">Тип: @Model.Type</div>
+        <div class="col-12">@Localizer["Тип"]: @Model.Type</div>
 
-        <div class="col-12">Період: @Model.Period</div>
+        <div class="col-12">@Localizer["Період"]: @Model.Period</div>
 
-        <div class="col-12">Ціна: @Model.Price</div>
+        <div class="col-12">@Localizer["Ціна"]: @Model.Price</div>
 
-        <div class="col-12">Опис: @Model.Description</div>       
+        <div class="col-12">@Localizer["Опис"]: @Model.Description</div>       
     </div>
     <form asp-action="UserTickets" asp-controller="Crud" method="post">
         <input type="hidden" name="id" value="@Model.TicketId" />
-        <button type="submit" class="btn btn-primary mt-2">Купити</button>
+        <button type="submit" class="btn btn-primary mt-2">@Localizer["Купити"]</button>
     </form>
     </div>
 </section

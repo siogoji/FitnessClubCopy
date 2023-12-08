@@ -10,25 +10,24 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
-                    <h2>Видалення абонемента</h2>
+                    <h2>@Localizer["Видалення абонемента"]</h2>
                 </div>
             </div>
         </div>
         <div class="container mt-4">
-            <p>Ви впевнені, що хочете видалити даний абонемент?</p>
+            <p>@Localizer["Ви впевнені, що хочете видалити даний абонемент?"]</p>
 
             <form asp-action="Delete" asp-controller="Crud" method="post">
                 <input type="hidden" asp-for="TicketId" />
 
-                <h4 class="small mt-2">Тип: @Model.Type</h4>
-                <h4 class="small">Період: @Model.Period</h4>
-                <h4 class="small">Ціна: @Model.Price</h4>
-                <h4 class="small">Опис: @Model.Description</h4>
+                <h4 class="small mt-2">@Localizer["Тип"]: @Model.Type</h4>
+                <h4 class="small">@Localizer["Період"]: @Model.Period</h4>
+                <h4 class="small">@Localizer["Ціна"]: @Model.Price</h4>
+                <h4 class="small">@Localizer["Опис"]: @Model.Description</h4>
 
-                <button type="submit" class="btn btn-danger">Так, видалити</button>
-                <a asp-action="Index" class="btn btn-secondary">Скасувати</a>
+                <button type="submit" class="btn btn-danger">@Localizer["Так, видалити"]</button>
+                <a asp-action="Index" class="btn btn-secondary">@Localizer["Скасувати"]</a>
             </form>
-
         </div>
     </div>
 </section>

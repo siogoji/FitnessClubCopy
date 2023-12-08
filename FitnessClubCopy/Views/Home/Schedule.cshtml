@@ -3,15 +3,14 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-
 <section class="section" id="schedule">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading dark-bg">
-                    <h2>Розклад <em>занять</em></h2>
+                    <h2>@Localizer["Розклад"] <em>@Localizer["занять"]</em></h2>
                     <img src="images/line-dec.png" alt="">
-                    <p>Ви можете переглянути розклад занять натиснувши на потрібний день тижня та побачивши інформацію вид заняття, яким Ви зацікавлені</p>
+                    <p>@Localizer["Ви можете переглянути розклад занять натиснувши на потрібний день тижня та побачивши інформацію вид заняття, яким Ви зацікавлені"]</p>
                 </div>
             </div>
         </div>
@@ -19,11 +18,11 @@
             <div class="col-lg-12">
                 <div class="filters">
                     <ul class="schedule-filter">
-                        <li class="active" data-tsfilter="monday">Понеділок</li>
-                        <li data-tsfilter="tuesday">Вівторок</li>
-                        <li data-tsfilter="wednesday">Середа</li>
-                        <li data-tsfilter="thursday">Четвер</li>
-                        <li data-tsfilter="friday">П'ятниця</li>
+                        <li class="active" data-tsfilter="monday">@Localizer["Понеділок"]</li>
+                        <li data-tsfilter="tuesday">@Localizer["Вівторок"]</li>
+                        <li data-tsfilter="wednesday">@Localizer["Середа"]</li>
+                        <li data-tsfilter="thursday">@Localizer["Четвер"]</li>
+                        <li data-tsfilter="friday">@Localizer["П'ятниця"]</li>
                     </ul>
                 </div>
             </div>
@@ -32,38 +31,37 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td class="day-time">Силові тренування</td>
-                                <td class="monday ts-item show" data-tsmeta="monday">10:00 - 11:30</td>
-                                <td class="tuesday ts-item" data-tsmeta="tuesday">14:00 - 15:30</td>
-                                <td>Григоренко Петро</td>
+                                <td class="day-time">@Localizer["Силові тренування"]</td>
+                                <td class="monday ts-item show" data-tsmeta="monday">@Localizer["10:00 - 11:30"]</td>
+                                <td class="tuesday ts-item" data-tsmeta="tuesday">@Localizer["14:00 - 15:30"]</td>
+                                <td>@Localizer["Григоренко Петро"]</td>
                             </tr>
                             <tr>
-                                <td class="day-time">Йога</td>
-                                <td class="friday ts-item" data-tsmeta="friday">10:00 - 11:30</td>
-                                <td class="thursday friday ts-item" data-tsmeta="thursday" data-tsmeta="friday">14:00 - 15:30</td>
-                                <td>Білик Вероніка</td>
+                                <td class="day-time">@Localizer["Йога"]</td>
+                                <td class="friday ts-item" data-tsmeta="friday">@Localizer["10:00 - 11:30"]</td>
+                                <td class="thursday friday ts-item" data-tsmeta="thursday" data-tsmeta="friday">@Localizer["14:00 - 15:30"]</td>
+                                <td>@Localizer["Білик Вероніка"]</td>
                             </tr>
                             <tr>
-                                <td class="day-time">Аеробіка</td>
-                                <td class="tuesday ts-item" data-tsmeta="tuesday">11:00 - 12:30</td>
-                                <td class="monday ts-item show" data-tsmeta="monday">16:00 - 17:30</td>
-                                <td>Атаманюк Христина</td>
+                                <td class="day-time">@Localizer["Аеробіка"]</td>
+                                <td class="tuesday ts-item" data-tsmeta="tuesday">@Localizer["11:00 - 12:30"]</td>
+                                <td class="monday ts-item show" data-tsmeta="monday">@Localizer["16:00 - 17:30"]</td>
+                                <td>@Localizer["Атаманюк Христина"]</td>
                             </tr>
                             <tr>
-                                <td class="day-time">Тренування високої інтенсивності</td>
-                                <td class="wednesday ts-item" data-tsmeta="wednesday">15:00 - 16:00</td>
-                                <td class="friday ts-item" data-tsmeta="friday">17:00 - 18:00</td>
-                                <td>Шерстюк Ілля</td>
+                                <td class="day-time">@Localizer["Тренування високої інтенсивності"]</td>
+                                <td class="wednesday ts-item" data-tsmeta="wednesday">@Localizer["15:00 - 16:00"]</td>
+                                <td class="friday ts-item" data-tsmeta="friday">@Localizer["17:00 - 18:00"]</td>
+                                <td>@Localizer["Шерстюк Ілля"]</td>
                             </tr>
                             <tr>
-                                <td class="day-time">Кросфіт</td>
-                                <td class="thursday ts-item" data-tsmeta="thursday">10:00 - 11:30</td>
-                                <td class="wednesday ts-item" data-tsmeta="wednesday">14:30 - 16:00</td>
-                                <td>Данилів Тимур</td>
+                                <td class="day-time">@Localizer["Кросфіт"]</td>
+                                <td class="thursday ts-item" data-tsmeta="thursday">@Localizer["10:00 - 11:30"]</td>
+                                <td class="wednesday ts-item" data-tsmeta="wednesday">@Localizer["14:30 - 16:00"]</td>
+                                <td>@Localizer["Данилів Тимур"]</td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
