@@ -159,6 +159,12 @@
   <data name="Одиничний абонемент" xml:space="preserve">
     <value>Одиничний абонемент</value>
   </data>
+  <data name="Пошук" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
+  <data name="Пошук..." xml:space="preserve">
+    <value>Пошук...</value>
+  </data>
   <data name="Річний абонемент" xml:space="preserve">
     <value>Річний абонемент</value>
   </data>
